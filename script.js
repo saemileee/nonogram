@@ -5,6 +5,8 @@ const yTasks = document.getElementById("y-tasks");
 let boardSize = 10;
 let cells = [];
 for (let x = 0; x < boardSize; x++) {
+  const task = document.createElement("div");
+  xTasks.appendChild(task);
   for (let y = 0; y < boardSize; y++) {
     cells.push({ coordinate: [x, y], is: false });
     const cell = document.createElement("div");
