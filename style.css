@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 1920px;
+  height: 1080px;
+}
+
+#game {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+#game .cell {
+  display: inline-block;
+  width: 10%;
+  height: 10%;
+  border: 1px solid black;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#game .cell.true {
+  background-color: black;
+}
