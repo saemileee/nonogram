@@ -12,20 +12,20 @@ body {
 #game {
 }
 /* x축 tasks(좌측) */
-#game #x-tasks {
+#x-tasks {
   /* position: relative;
   top: 40px;
   height: 300px; */
 }
 
-#game #x-tasks .task-box {
+#x-tasks .task-box {
   /* display: inline-block;
   height: 10%;
   border: 1px solid black; */
 }
 
 /* y축 tasks(탑) */
-#game #y-tasks {
+#y-tasks {
   /* position: absolute;
   left: 40px;
   top: 20px;
@@ -52,25 +52,29 @@ body {
 #game {
 }
 
-#game #x-tasks {
+#y-tasks {
 }
 
-#game #y-tasks {
+#x-tasks {
+  width: 40px;
+  height: 240px;
+  border: solid black 1px;
 }
 
-#game #board {
+#board {
 }
 
-#game #board tr {
+#board tr {
+  width: 24px;
 }
 
-#game #board tr td.cell {
+#board tr td.cell {
   width: 24px;
   height: 24px;
   border: 1px solid black;
 }
 
-#game #board tr td.cell.true {
+#board tr td.cell.true {
   background-color: black;
 }
 
