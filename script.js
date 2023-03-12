@@ -1,80 +1,71 @@
-const gameBoard = document.getElementById("all-cells");
-const xTasks = document.getElementById("x-tasks");
-const yTasks = document.getElementById("y-tasks");
+const gameBoard = document.getElementById("board");
+const xTaskContainerEl = document.getElementById("x-tasks");
+const yTaskContainerEl = document.getElementById("y-tasks");
 
 let boardSize = 10;
 let cells = [];
-for (let x = 0; x < boardSize; x++) {
-  const xTaskBox = document.createElement("div");
-  xTaskBox.setAttribute("class", `x${x} task-box`);
-  xTasks.appendChild(xTaskBox);
 
-  const yTaskBox = document.createElement("div");
+for (let x = 1; x <= boardSize; x++) {
+  const xTaskBoxEl = document.createElement("tr");
+  xTaskBoxEl.setAttribute("class", `x${x} task-box`);
+  xTaskContainerEl.appendChild(xTaskBoxEl);
+
+  const yTaskBox = document.createElement("tr");
   yTaskBox.setAttribute("class", `x${x} task-box`);
-  yTasks.appendChild(yTaskBox);
+  yTaskContainerEl.appendChild(yTaskBox);
 
-  for (let y = 0; y < boardSize; y++) {
-    cells.push({ coordinate: [x, y], is: false });
-    const cell = document.createElement("div");
-    cell.setAttribute("class", `cell ${cells[y].is}`);
+  //로우 만들기
+  const trEl = document.createElement("tr");
+  gameBoard.appendChild(trEl);
+
+  for (let y = 1; y <= boardSize; y++) {
+    cells.push({ x: x, y: y, is: false });
+
+    const cell = document.createElement("td");
+    cell.setAttribute("class", `cell`);
     cell.setAttribute("data-x", `${x}`);
     cell.setAttribute("data-y", `${y}`);
-    gameBoard.appendChild(cell);
+
+    trEl.appendChild(cell);
+
     cell.addEventListener("click", (e) => {
       //클릭한 셀의 좌표
       const thisX = parseInt(e.target.getAttribute("data-x"));
       const thisY = parseInt(e.target.getAttribute("data-y"));
-
-      //클릭 시 셀 채우기
-      if (e.target.classList.contains("false")) {
-        cells.map((cell) => {
-          if (cell.coordinate[0] === thisX && cell.coordinate[1] === thisY) {
-            cell.is = true;
-          }
-        });
-        cell.setAttribute("class", `cell ${cells[y].is}`);
-      } else {
-        // 채워진 셀 클릭 시 셀 지우기
-        cells.map((cell) => {
-          if (cell.coordinate[0] === thisX && cell.coordinate[1] === thisY) {
-            cell.is = false;
-          }
-        });
-        cell.setAttribute("class", `cell ${cells[y].is}`);
-      }
     });
   }
 }
 
 // 문제 세팅
 
-function puzzleSetting() {
-  const x0 = cells.filter((cell) => cell.coordinate[0] === 0);
-  let tasks = [];
-  let taskCount = 0;
-  for (let i = 0; i < x0.length; i++) {
-    if (x0[i].is === true) {
-      taskCount += 1;
-      if (i === x0.length - 1) {
-        tasks.push(taskCount);
-      }
-    } else if (x0[i].is === false) {
-      taskCount !== 0 ? tasks.push(taskCount) : null;
-      taskCount = 0;
-    }
-  }
-  console.log(x0);
+// function puzzleSetting() {
+//   for (let i = 0; i < boardSize; i++) {
+//     //x 문제들 나열
+//     const _x = cells.filter((cell) => cell.coordinate[0] === i);
+//     let tasks = [];
+//     let taskCount = 0;
+//     for (let j = 1; j <= _x.length; j++) {
+//       if (_x[j].is === true) {
+//         taskCount += 1;
+//         j === _x.length - 1 ? tasks.push(taskCount) : null;
+//       } else if (_x[j].is === false) {
+//         taskCount !== 0 ? tasks.push(taskCount) : null;
+//         taskCount = 0;
+//       }
+//       console.log(tasks);
+//     }
 
-  const _xTaskBox = document.querySelector(".x0");
-  for (const i of tasks) {
-    const taskDiv = document.createElement("div");
-    taskDiv.innerHTML = i;
-    console.log(_xTaskBox);
-    _xTaskBox.appendChild(taskDiv);
-  }
-}
+//     const _xTaskBox = document.querySelector(`.x${i}`);
+//     for (const i of tasks) {
+//       const taskDiv = document.createElement("tr");
+//       taskDiv.innerHTML = i;
+//       taskDiv.setAttribute("class", "task");
+//       _xTaskBox.appendChild(taskDiv);
+//     }
+//   }
+// }
 
 //set btn
 const setBtn = document.getElementById("set-btn");
 
-setBtn.addEventListener("click", puzzleSetting);
+// setBtn.addEventListener("click", puzzleSetting);

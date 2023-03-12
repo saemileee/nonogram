@@ -10,63 +10,71 @@ body {
 }
 
 #game {
-  display: inline-block;
 }
 /* x축 tasks(좌측) */
 #game #x-tasks {
-  position: relative;
+  /* position: relative;
   top: 40px;
-  width: 40px;
-  height: 300px;
+  height: 300px; */
 }
 
 #game #x-tasks .task-box {
-  display: inline-block;
-  width: 40px;
+  /* display: inline-block;
   height: 10%;
-  border: 1px solid black;
+  border: 1px solid black; */
 }
 
 /* y축 tasks(탑) */
 #game #y-tasks {
-  position: absolute;
+  /* position: absolute;
   left: 40px;
   top: 20px;
-  width: 300px;
+  width: 300px; */
 }
 
 #game #y-tasks .task-box {
-  width: 10%;
+  /* width: 10%;
   height: 40px;
   border: 1px solid black;
+  display: inline-block; */
+}
+
+/* task div */
+.task {
+  width: 30px;
+  height: 30px;
   display: inline-block;
+  border: 1px solid black;
+  text-align: center;
 }
 
 /* 셀 보드 */
-#all-cells {
-  position: absolute;
-  top: 60px;
-  left: 40px;
-  display: inline-block;
-  width: 300px;
-  height: 300px;
+#game {
+}
+
+#game #x-tasks {
+}
+
+#game #y-tasks {
+}
+
+#game #board {
+}
+
+#game #board tr {
+}
+
+#game #board tr td.cell {
+  width: 24px;
+  height: 24px;
   border: 1px solid black;
 }
 
-#all-cells .cell {
-  display: inline-block;
-  width: 10%;
-  height: 10%;
-  border: 1px solid black;
-  margin: 0;
-  margin-left: -1px;
-  margin-top: -1px;
-}
-
-#all-cells .cell.true {
+#game #board tr td.cell.true {
   background-color: black;
 }
 
+/* 문제 생성 버튼 */
 #set-btn {
   position: absolute;
   top: 400px;
