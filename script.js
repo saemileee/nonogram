@@ -78,9 +78,23 @@ function puzzleSetting(x, y) {
       yTaskCount = 0;
     }
   }
-  console.log(xTasks);
-  console.log(yTasks);
+
+  //클래스 명이 x[x]인 xTaskBoxEl 찾기
+  const xTaskBoxEl = document.querySelector(`#x-tasks .x${x}`);
+
+  xTaskBoxEl.innerHTML = xTasks.map((count) => `<p>${count}</p>`).join("");
+
+  //클래스 명이 y[y]인 yTaskBoxEl 찾기
+  const yTaskBoxEl = document.querySelector(`#y-tasks .y${y}`);
+
+  yTaskBoxEl.innerHTML = yTasks.map((count) => `<p>${count}</p>`).join("");
 }
+
+// //문제 그리기
+
+// function paintTaskCount(x, y, xTasks, yTasks) {
+
+// }
 
 // function puzzleSetting() {
 //   for (let i = 0; i < boardSize; i++) {

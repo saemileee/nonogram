@@ -9,56 +9,47 @@ body {
   height: 1080px;
 }
 
-#game {
-}
-/* x축 tasks(좌측) */
-#x-tasks {
-  /* position: relative;
-  top: 40px;
-  height: 300px; */
-}
-
-#x-tasks .task-box {
-  /* display: inline-block;
-  height: 10%;
-  border: 1px solid black; */
-}
-
-/* y축 tasks(탑) */
-#y-tasks {
-  /* position: absolute;
-  left: 40px;
-  top: 20px;
-  width: 300px; */
-}
-
-#game #y-tasks .task-box {
-  /* width: 10%;
-  height: 40px;
-  border: 1px solid black;
-  display: inline-block; */
-}
-
-/* task div */
-.task {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  border: 1px solid black;
-  text-align: center;
+#full-tbl {
 }
 
 /* 셀 보드 */
-#game {
+#full-tbl div:nth-child(2) {
+  display: flex;
 }
 
 #y-tasks {
+  width: 240px;
+}
+
+#y-tasks .task-box {
+}
+
+#y-tasks .task-box tr {
+  display: inline-block;
 }
 
 #x-tasks {
-  width: 40px;
   height: 240px;
   border: solid black 1px;
+}
+
+#x-tasks .task-box {
+  height: 24px;
+}
+
+#x-tasks .task-box p {
+  display: inline-block;
+}
+
+.task-box {
+  border: 1px solid black;
+}
+
+.task-box p {
+  width: 24px;
+  height: 24px;
+  border: 1px solid black;
+  text-align: center;
 }
 
 #board {
