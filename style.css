@@ -5,72 +5,93 @@
 }
 
 body {
-  width: 1920px;
-  height: 1080px;
+  margin: 0 auto;
 }
 
-#full-tbl {
+:root {
+  --board-size: 400px;
+  --box-size: 15;
 }
 
-/* 셀 보드 */
-#full-tbl div:nth-child(2) {
-  display: flex;
+/* grid */
+
+#game-grid-container {
+  width: inherit;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
 }
+
+#game-grid-container div {
+}
+
+.grid-box {
+  border: 2px solid rgb(0, 0, 0);
+}
+
+/*  */
 
 #y-tasks {
-  width: 240px;
+  width: var(--board-size);
+  display: grid;
+  grid-template-columns: repeat(var(--box-size), 1fr);
 }
 
 #y-tasks .task-box {
+  width: calc(var(--board-size) / var(--box-size));
+  border-right: 1px solid black;
 }
 
-#y-tasks .task-box tr {
-  display: inline-block;
+#y-tasks .task-box p {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 #x-tasks {
-  height: 240px;
-  border: solid black 1px;
+  height: var(--board-size);
+  display: grid;
+  grid-template-rows: repeat(var(--box-size), 1fr);
 }
 
 #x-tasks .task-box {
-  height: 24px;
+  height: calc(var(--board-size) / var(--box-size));
+  border-bottom: 1px solid black;
 }
 
 #x-tasks .task-box p {
   display: inline-block;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .task-box {
-  border: 1px solid black;
 }
 
 .task-box p {
-  width: 24px;
-  height: 24px;
-  border: 1px solid black;
+  width: calc(var(--board-size) / var(--box-size));
+  height: calc(var(--board-size) / var(--box-size));
   text-align: center;
 }
 
+/* 셀 보드 */
 #board {
+  width: var(--board-size);
+  height: var(--board-size);
+  display: grid;
+  grid-template-rows: repeat(var(--box-size), 1fr);
 }
 
-#board tr {
-  width: 24px;
+#board div.row-container {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: repeat(var(--box-size), 1fr);
 }
 
-#board tr td.cell {
-  width: 24px;
-  height: 24px;
+#board div.cell {
+  display: inline-block;
   border: 1px solid black;
 }
 
-#board tr td.cell.true {
+#board div.cell.true {
   background-color: black;
-}
-
-/* 문제 생성 버튼 */
-#set-btn {
-  position: absolute;
-  top: 400px;
 }

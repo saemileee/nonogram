@@ -2,26 +2,27 @@ const gameBoard = document.getElementById("board");
 const xTaskContainerEl = document.getElementById("x-tasks");
 const yTaskContainerEl = document.getElementById("y-tasks");
 
-let boardSize = 10;
+let boardSize = 15;
 let cells = [];
 
 for (let x = 1; x <= boardSize; x++) {
-  const xTaskBoxEl = document.createElement("tr");
+  const xTaskBoxEl = document.createElement("div");
   xTaskBoxEl.setAttribute("class", `x${x} task-box`);
   xTaskContainerEl.appendChild(xTaskBoxEl);
 
-  const yTaskBox = document.createElement("tr");
+  const yTaskBox = document.createElement("div");
   yTaskBox.setAttribute("class", `y${x} task-box`);
   yTaskContainerEl.appendChild(yTaskBox);
 
   //로우 만들기
-  const trEl = document.createElement("tr");
+  const trEl = document.createElement("div");
+  trEl.setAttribute("class", "row-container");
   gameBoard.appendChild(trEl);
 
   for (let y = 1; y <= boardSize; y++) {
     cells.push({ x: x, y: y, is: false });
 
-    const cell = document.createElement("td");
+    const cell = document.createElement("div");
     cell.setAttribute("class", `cell`);
     cell.setAttribute("data-x", `${x}`);
     cell.setAttribute("data-y", `${y}`);

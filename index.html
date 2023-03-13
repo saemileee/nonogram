@@ -10,21 +10,19 @@
   </head>
   <body>
     <h1>Nemo-logic</h1>
-    <div id="full-tbl">
-      <div>
-        <table id="top">
-          <tbody id="y-tasks"></tbody>
-        </table>
-      </div>
-      <div>
-        <table>
-          <tbody id="x-tasks"></tbody>
-        </table>
-        <table>
-          <tbody id="board"></tbody>
-        </table>
-      </div>
+    <div id="game-grid-container">
+      <div id="empty-cell" class="grid-box"></div>
+      <div id="y-tasks" class="grid-box"></div>
+      <div id="x-tasks" class="grid-box"></div>
+      <div id="board" class="grid-box"></div>
     </div>
+
+    <!-- <div class="game-grid-container">
+      <div class="empty">empty</div>
+      <div class="top">top</div>
+      <div class="left">left</div>
+      <div class="board">board</div>
+    </div> -->
   </body>
   <script src="script.js"></script>
 </html>
