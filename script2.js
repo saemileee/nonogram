@@ -69,47 +69,56 @@ function paintCell(row, col, e) {
 const rowClue = createClue("row", ROWS);
 const colClue = createClue("col", COLS);
 
-function createClue(matrix, cells) {
-  const clue = document.getElementById(`${matrix}-clue`);
-  for (let i = 0; i <= cells; i++) {
+function createClue(matrixName, matrix) {
+  const clue = document.getElementById(`${matrixName}-clue`);
+  for (let i = 0; i < matrix; i++) {
     const clueContainer = document.createElement("div");
-    clueContainer.setAttribute("class", `${matrix}${i} clue-container`);
+    clueContainer.setAttribute("class", `${matrixName}${i} clue-container`);
     clue.appendChild(clueContainer);
   }
   return clue;
 }
 
 //페인트 된 셀 카운트하기
-function countTasks(cells) {
+function countTasks(matrixName, size, thisCell) {
   let clueArr = [];
   let taskCount = 0;
 
   //셀 순회
-  for (let i = 0; i < cells.length; i++) {
+  for (let i = 0; i < size; i++) {
     //셀 순회 중 현재 셀이 true인 경우 카운트가 1씩 증가, true가 아니라면 지금까지 카운트 된 셀은 clueArr에 담고 카운트 초기화, 마지막 인덱스의 셀이라면 현재 셀이 true이더라도 clueArr에 추가
-    if (cells[i] === true) {
+    if (matrixName === "row" && cells[thisCell][i] === true) {
       taskCount += 1;
-      i === cells.length - 1 ? clueArr.push(taskCount) : null;
+      if (i === size - 1) {
+        clueArr.push(taskCount);
+      }
+    } else if (matrixName === "col" && cells[i][thisCell] === true) {
+      taskCount += 1;
+      if (i === size - 1) {
+        clueArr.push(taskCount);
+      }
     } else {
       taskCount && clueArr.push(taskCount);
       taskCount = 0;
     }
   }
-  console.log(clueArr);
 
   return clueArr;
 }
 
 //clue 세팅
-function clueSetting(row, col) {
-  //   const colCells = cells.filter((cell) => cell.col === col);
+function clueSetting(thisRow, thisCol) {
+  const rowClueArr = countTasks("row", COLS, thisRow);
+  const colClueArr = countTasks("col", ROWS, thisCol);
 
-  const rowTasks = countTasks(cells[row]);
-  const colTasks = countTasks(cells);
+  //clue콘테이너 만들고 clueArr 받아서 페인팅하기
+  const rowClueContainer = document.querySelector(`#row-clue .row${thisRow}`);
+  rowClueContainer.innerHTML = rowClueArr
+    .map((count) => `<p>${count}</p>`)
+    .join("");
 
-  //   const rowTaskBoxEl = document.querySelector(`#row-tasks .row${row}`);
-  //   rowTaskBoxEl.innerHTML = rowTasks.map((count) => `<p>${count}</p>`).join("");
-
-  //   const colTaskBoxEl = document.querySelector(`#col-tasks .col${col}`);
-  //   colTaskBoxEl.innerHTML = colTasks.map((count) => `<p>${count}</p>`).join("");
+  const colClueContainer = document.querySelector(`#col-clue .col${thisCol}`);
+  colClueContainer.innerHTML = colClueArr
+    .map((count) => `<p>${count}</p>`)
+    .join("");
 }
