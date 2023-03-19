@@ -1,15 +1,15 @@
 const gameBoard = document.getElementById("board");
 
-const rows = 10;
+const rows = 5;
 createTaskBox("row", rows);
-const cols = 10;
+const cols = 5;
 createTaskBox("col", cols);
 let cells = [];
 
 for (let i = 1; i <= rows; i++) {
   //로우 만들기
   const divEl = document.createElement("div");
-  divEl.setAttribute("class", "row-container");
+  divEl.setAttribute("class", "row");
   gameBoard.appendChild(divEl);
 
   for (let j = 1; j <= cols; j++) {
@@ -41,10 +41,10 @@ for (let i = 1; i <= rows; i++) {
 }
 
 function createTaskBox(matrix, cells) {
-  const taskContainerEl = document.getElementById(`${matrix}-tasks`);
+  const taskContainerEl = document.getElementById(`${matrix}-clue`);
   for (let i = 1; i <= cells; i++) {
     const taskBoxEl = document.createElement("div");
-    taskBoxEl.setAttribute("class", `${matrix}${i} task-box`);
+    taskBoxEl.setAttribute("class", `${matrix}${i} clue-container`);
     taskContainerEl.appendChild(taskBoxEl);
   }
 }

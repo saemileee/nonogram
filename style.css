@@ -9,9 +9,10 @@ body {
 }
 
 :root {
-  --board-size-w: 300px;
   --board-size-h: 300px;
-  --box-size: 10;
+  --board-size-w: 300px;
+  --row-size: 5;
+  --col-size: 5;
 }
 
 /* grid */
@@ -43,7 +44,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   /* align-items: flex-end; */
-  width: calc(var(--board-size-w) / var(--box-size));
+  width: calc(var(--board-size-w) / var(--col-size));
   border-right: 1px solid black;
   overflow: hidden;
 }
@@ -66,7 +67,7 @@ body {
 #row-clue .clue-container {
   display: flex;
   justify-content: flex-end;
-  height: calc(var(--board-size-h) / var(--box-size));
+  height: calc(var(--board-size-h) / var(--row-size));
   border-bottom: 1px solid black;
   overflow: hidden;
 }
@@ -78,18 +79,17 @@ body {
 #row-clue .clue-container p {
   display: inline-block;
   border-left: 1px solid black;
-}
-
-.clue-container {
+  overflow: hidden;
 }
 
 .clue-container p {
-  width: calc(var(--board-size-w) / var(--box-size));
-  height: calc(var(--board-size-h) / var(--box-size));
+  width: calc(var(--board-size-w) / var(--col-size));
+  height: calc(var(--board-size-h) / var(--row-size));
   text-align: center;
 
-  font-size: 0.8em;
-  line-height: 120%;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  overflow: hidden;
 }
 
 /* 셀 보드 */
@@ -103,12 +103,12 @@ body {
 #board div.row {
   width: 100%;
   display: inline-grid;
-  grid-template-columns: repeat(var(--box-size), 1fr);
+  grid-template-columns: repeat(var(--col-size), 1fr);
 }
 
 #board div.row > div {
   display: inline-block;
-  border: 1px solid black;
+  border: 0.5px solid rgb(180, 180, 180);
 }
 
 #board div.row > div.true {

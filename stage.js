@@ -1,7 +1,15 @@
 const gameBoard = document.getElementById("board");
 
-const ROWS = 5;
-const COLS = 5;
+const answerArr = [
+  [true, true, true, true, true],
+  [true, false, false, false, false],
+  [true, false, false, false, false],
+  [true, false, false, true, false],
+  [true, false, false, false, false],
+];
+
+const ROWS = answerArr.length;
+const COLS = answerArr[0].length;
 let cells = [];
 
 //2차원 배열 만들기
@@ -45,9 +53,6 @@ function checkCellArr(e) {
   //클릭한 셀의 배열을 토글로 변경
   cells[thisRow][thisCol] = !cells[thisRow][thisCol];
   paintCell(thisRow, thisCol, e);
-
-  //힌트 세팅 (문제출제용)
-  clueSetting(thisRow, thisCol);
 }
 
 //우클릭 시 셀배열 블락 체크
@@ -104,12 +109,12 @@ function countTasks(matrixName, size, thisCell) {
   //셀 순회
   for (let i = 0; i < size; i++) {
     //셀 순회 중 현재 셀이 true인 경우 카운트가 1씩 증가, true가 아니라면 지금까지 카운트 된 셀은 clueArr에 담고 카운트 초기화, 마지막 인덱스의 셀이라면 현재 셀이 true이더라도 clueArr에 추가
-    if (matrixName === "row" && cells[thisCell][i] === true) {
+    if (matrixName === "row" && answerArr[thisCell][i] === true) {
       taskCount += 1;
       if (i === size - 1) {
         clueArr.push(taskCount);
       }
-    } else if (matrixName === "col" && cells[i][thisCell] === true) {
+    } else if (matrixName === "col" && answerArr[i][thisCell] === true) {
       taskCount += 1;
       if (i === size - 1) {
         clueArr.push(taskCount);
@@ -124,26 +129,44 @@ function countTasks(matrixName, size, thisCell) {
 }
 
 //clue 세팅
-function clueSetting(thisRow, thisCol) {
-  const rowClueArr = countTasks("row", COLS, thisRow);
-  const colClueArr = countTasks("col", ROWS, thisCol);
+function clueSetting() {
+  for (let i = 0; i < ROWS; i++) {
+    const rowClueArr = countTasks("row", COLS, i);
+    //clue콘테이너 만들고 clueArr 받아서 페인팅하기
+    const rowClueContainer = document.querySelector(`#row-clue .row${i}`);
+    rowClueContainer.innerHTML = rowClueArr
+      .map((count) => `<p>${count}</p>`)
+      .join("");
+  }
 
-  //clue콘테이너 만들고 clueArr 받아서 페인팅하기
-  const rowClueContainer = document.querySelector(`#row-clue .row${thisRow}`);
-  rowClueContainer.innerHTML = rowClueArr
-    .map((count) => `<p>${count}</p>`)
-    .join("");
-
-  const colClueContainer = document.querySelector(`#col-clue .col${thisCol}`);
-  colClueContainer.innerHTML = colClueArr
-    .map((count) => `<p>${count}</p>`)
-    .join("");
+  for (let i = 0; i < COLS; i++) {
+    const colClueArr = countTasks("col", ROWS, i);
+    //clue콘테이너 만들고 clueArr 받아서 페인팅하기
+    const colClueContainer = document.querySelector(`#col-clue .col${i}`);
+    colClueContainer.innerHTML = colClueArr
+      .map((count) => `<p>${count}</p>`)
+      .join("");
+  }
 }
 
-const testAnswerArr = [
-  [true, true, true, true, true],
-  [true, false, false, false, false],
-  [true, false, false, false, false],
-  [true, false, false, false, false],
-  [true, false, false, false, false],
-];
+clueSetting();
+
+//답안 제출
+
+function submitAnswer(e) {
+  let incorrectCounter = 0;
+
+  for (let i = 0; i < ROWS; i++) {
+    for (let j = 0; j < COLS; j++) {
+      if (cells[i][j] === "block") {
+        cells[i][j] = false;
+      }
+      cells[i][j] !== answerArr[i][j] ? incorrectCounter++ : null;
+    }
+  }
+  incorrectCounter === 0 ? alert("ok") : alert("try again");
+}
+
+const submitBtn = document.querySelector("#submit");
+
+submitBtn.addEventListener("click", submitAnswer);
