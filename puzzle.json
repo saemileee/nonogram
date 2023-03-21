@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "answer": [
+      [true, true, true, true, true],
+      [true, false, false, false, false],
+      [true, false, false, false, false],
+      [true, false, false, true, false],
+      [true, false, false, false, false]
+    ],
+    "status": false,
+    "size": "5*5",
+    "recommendation": 32,
+    "avgTime": 12345,
+    "finishedCount": 32,
+    "show": true
+  },
+  {
+    "id": 2,
+    "answer": [
+      [true, false, true, true, true],
+      [true, false, false, false, false],
+      [true, false, false, false, false],
+      [true, false, false, true, false],
+      [true, false, false, false, false]
+    ],
+    "status": false,
+    "size": "5*5",
+    "recommendation": 32,
+    "avgTime": 12345,
+    "finishedCount": 32,
+    "show": true
+  },
+  {
+    "id": 3,
+    "answer": [
+      [true, true, true, true, true],
+      [true, false, false, false, false],
+      [true, false, false, false, false],
+      [true, false, false, true, false],
+      [true, false, false, false, false]
+    ],
+    "status": false,
+    "size": "5*5",
+    "recommendation": 32,
+    "avgTime": 12345,
+    "finishedCount": 32,
+    "show": true
+  },
+  {
+    "id": 4,
+    "answer": [
+      [true, true, true, true, true],
+      [true, false, false, false, false],
+      [true, false, false, false, false],
+      [true, false, false, true, false],
+      [true, false, false, false, false]
+    ],
+    "size": "5*5",
+    "status": false,
+    "recommendation": 32,
+    "avgTime": 12345,
+    "finishedCount": 32,
+    "show": true
+  },
+  {
+    "id": 5,
+    "answer": [
+      [true, true, true, true, true],
+      [true, false, false, false, false],
+      [true, false, false, false, false],
+      [true, false, false, true, false],
+      [true, false, false, false, false]
+    ],
+    "size": "5*5",
+    "status": false,
+    "recommendation": 32,
+    "avgTime": 12345,
+    "finishedCount": 32,
+    "show": true
+  }
+]

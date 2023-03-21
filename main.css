@@ -8,6 +8,7 @@ body {
 
 #app-main {
   max-width: 75rem;
+  min-width: 45rem;
   margin: 0 auto;
 }
 
@@ -41,15 +42,15 @@ body {
 }
 
 #app-main > main > ul > li {
-  width: 5rem;
-  height: 2rem;
+  width: 4rem;
+  padding: 0.7rem;
   margin-right: 8px;
-  border: 1px solid rgb(164, 211, 233);
+  border: 1px solid rgb(197, 202, 207);
   border-radius: 0.4rem;
-  background-color: rgba(121, 162, 243, 0.456);
+  background-color: rgb(205, 214, 249);
+  font-size: 14px;
   text-align: center;
-  line-height: 210%;
-  color: rgb(53, 45, 102);
+  color: rgb(18, 2, 54);
 }
 
 #app-main > main table {
@@ -68,7 +69,6 @@ body {
 }
 
 #app-main > main table thead tr th {
-  border-collapse: separate;
   border-radius: 1rem;
   border: 1px solid rgb(215, 226, 235);
   height: 3rem;
