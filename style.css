@@ -28,7 +28,6 @@ body {
 }
 
 .grid-box {
-  border: 2px solid rgb(0, 0, 0);
 }
 
 /*  */
@@ -37,6 +36,8 @@ body {
   width: var(--board-size-w);
   display: flex;
   background-color: rgb(202, 216, 243);
+  border: 2px solid black;
+  border-bottom: none;
 }
 
 #col-clue .clue-container {
@@ -62,6 +63,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: rgb(202, 216, 243);
+  border: 2px solid black;
+  border-right: none;
 }
 
 #row-clue .clue-container {
@@ -98,6 +101,7 @@ body {
   height: var(--board-size-h);
   display: grid;
   grid-template-rows: repeat(var(--box-size), 1fr);
+  border: 2px solid black;
 }
 
 #board div.row {
@@ -108,7 +112,8 @@ body {
 
 #board div.row > div {
   display: inline-block;
-  border: 0.5px solid rgb(180, 180, 180);
+  border-left: 0.5px solid rgb(180, 180, 180);
+  border-bottom: 0.5px solid rgb(180, 180, 180);
 }
 
 #board div.row > div.true {

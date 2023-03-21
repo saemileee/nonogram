@@ -33,11 +33,11 @@ for (let i = 0; i < ROWS; i++) {
     cell.addEventListener("contextmenu", checkBlockArr);
 
     //5칸마다 굵은 border
-    if (j % 5 === 0) {
+    if (j % 5 === 0 && j > 0) {
       cell.style.borderLeftWidth = "1.5px";
       cell.style.borderLeftColor = "black";
     }
-    if (i % 5 === 0) {
+    if (i % 5 === 0 && i > 0) {
       cell.style.borderTopWidth = "1.5px";
       cell.style.borderTopColor = "black";
     }
@@ -164,7 +164,9 @@ function submitAnswer(e) {
       cells[i][j] !== answerArr[i][j] ? incorrectCounter++ : null;
     }
   }
-  incorrectCounter === 0 ? alert("ok") : alert("try again");
+  incorrectCounter === 0
+    ? alert("축하합니다!!")
+    : alert(`다시 시도해 보세요.\n틀린개수: ${incorrectCounter}개`);
 }
 
 const submitBtn = document.querySelector("#submit");

@@ -1,7 +1,7 @@
 const gameBoard = document.getElementById("board");
 
-const ROWS = 5;
-const COLS = 5;
+const ROWS = 10;
+const COLS = 10;
 let cells = [];
 
 //2차원 배열 만들기
@@ -12,6 +12,12 @@ for (let i = 0; i < ROWS; i++) {
   const row = document.createElement("div");
   row.setAttribute("class", "row");
   gameBoard.appendChild(row);
+
+  if ((i + 1) % 5 === 0 && i > 0) {
+    row.style.borderBottomWidth = "1.5px";
+    row.style.borderStyle = "solid";
+    row.style.borderBottomColor = "black";
+  }
 
   for (let j = 0; j < COLS; j++) {
     cells[i].push(false);
@@ -25,13 +31,10 @@ for (let i = 0; i < ROWS; i++) {
     cell.addEventListener("contextmenu", checkBlockArr);
 
     //5칸마다 굵은 border
-    if (j % 5 === 0) {
+
+    if (j % 5 === 0 && j > 0) {
       cell.style.borderLeftWidth = "1.5px";
       cell.style.borderLeftColor = "black";
-    }
-    if (i % 5 === 0) {
-      cell.style.borderTopWidth = "1.5px";
-      cell.style.borderTopColor = "black";
     }
   }
 }
@@ -77,23 +80,18 @@ function paintCell(row, col, e) {
 }
 
 //힌트 컨테이너 만들기
-const rowClue = createClue("row", ROWS);
-const colClue = createClue("col", COLS);
+const rowClueContainer = createClueContainer("row", ROWS);
+const colClueContainer = createClueContainer("col", COLS);
 
-function createClue(matrixName, matrix) {
-  const clue = document.getElementById(`${matrixName}-clue`);
-  for (let i = 0; i < matrix; i++) {
-    const clueContainer = document.createElement("div");
-    clueContainer.setAttribute("class", `${matrixName}${i} clue-container`);
-    clue.appendChild(clueContainer);
-    //5칸마다 굵은 border
-    if (i % 5 === 0 && matrixName === "row") {
-      clueContainer.style.borderTopWidth = "1.5px";
-    } else if (i % 5 === 0 && matrixName === "col") {
-      clueContainer.style.borderLeftWidth = "1.5px";
-    }
+function createClueContainer(matrixName, size) {
+  const clueContainer = document.getElementById(`${matrixName}-clue`);
+  for (let i = 0; i < size; i++) {
+    const clueArrBox = document.createElement("div");
+    clueArrBox.setAttribute("class", `${matrixName}${i} clue-container`);
+
+    clueContainer.appendChild(clueArrBox);
   }
-  return clue;
+  return clueContainer;
 }
 
 //페인트 된 셀 카운트하기
@@ -139,11 +137,3 @@ function clueSetting(thisRow, thisCol) {
     .map((count) => `<p>${count}</p>`)
     .join("");
 }
-
-const testAnswerArr = [
-  [true, true, true, true, true],
-  [true, false, false, false, false],
-  [true, false, false, false, false],
-  [true, false, false, false, false],
-  [true, false, false, false, false],
-];

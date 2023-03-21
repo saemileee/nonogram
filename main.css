@@ -1,0 +1,141 @@
+body {
+  background-color: rgb(243, 243, 243);
+}
+
+* {
+  color: rgb(36, 36, 36);
+}
+
+#app-main {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+#app-main > header {
+  width: 100%;
+}
+
+#app-main > header > h1 {
+  height: 5rem;
+  font-size: 3rem;
+  font-weight: bold;
+  padding-top: 32px;
+  line-height: 4rem;
+}
+
+#app-main > header > p {
+  height: 5rem;
+  font-size: 1rem;
+  line-height: 160%;
+}
+
+#app-main > main {
+}
+
+#app-main > main > #search {
+}
+
+#app-main > main > ul {
+  display: flex;
+  margin: 26px 0 26px 0;
+}
+
+#app-main > main > ul > li {
+  width: 5rem;
+  height: 2rem;
+  margin-right: 8px;
+  border: 1px solid rgb(164, 211, 233);
+  border-radius: 0.4rem;
+  background-color: rgba(121, 162, 243, 0.456);
+  text-align: center;
+  line-height: 210%;
+  color: rgb(53, 45, 102);
+}
+
+#app-main > main table {
+  border-collapse: collapse;
+  border-radius: 1rem;
+  width: 100%;
+  text-indent: initial;
+  border-spacing: 2px;
+  background-color: rgb(249, 249, 249);
+}
+
+#app-main > main table thead {
+}
+
+#app-main > main table thead tr {
+}
+
+#app-main > main table thead tr th {
+  border-collapse: separate;
+  border-radius: 1rem;
+  border: 1px solid rgb(215, 226, 235);
+  height: 3rem;
+}
+
+#app-main > main table thead tr th .sort-btn-container {
+  position: relative;
+  top: 0.5rem;
+  display: inline-block;
+}
+
+#app-main > main table thead tr th .sort-btn-container button.sort {
+  width: 14px;
+  height: 14px;
+  display: block;
+  text-align: center;
+}
+
+#app-main > main table thead tr th.id {
+  width: 5rem;
+}
+
+#app-main > main table thead tr th.status {
+  width: 5rem;
+}
+
+#app-main > main table thead tr th.title {
+}
+
+#app-main > main table thead tr th.size {
+  width: 6rem;
+}
+
+#app-main > main table thead tr th.finished-count {
+  width: 6rem;
+}
+
+#app-main > main table thead tr th.recommendation {
+  width: 6rem;
+}
+#app-main > main table thead tr th.avg-time {
+  width: 6rem;
+}
+
+#app-main > main table tbody {
+  display: table-row-group;
+  vertical-align: middle;
+}
+#app-main > main table tbody tr {
+  height: 2.5rem;
+}
+
+#app-main > main table tbody tr td.title {
+  padding-left: 1.5rem;
+  text-align: left;
+}
+
+#app-main > main table tr td {
+  text-align: center;
+  line-height: 2rem;
+  padding: 0.5rem 0.75rem;
+  font-size: rem;
+  color: rgb(38, 55, 71);
+  border: 1px solid rgb(215, 226, 235);
+  vertical-align: inherit;
+  display: table-cell;
+}
+
+#app-main > footer {
+}
