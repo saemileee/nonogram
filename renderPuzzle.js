@@ -1,18 +1,14 @@
-function PaintStage() {
+export function paintStage(puzzleID, puzzleArr) {
+  const gamePage = document.getElementById("game-page-container");
   const gameBoard = document.getElementById("board");
 
-  const answerArr = [
-    [true, true, true, true, true],
-    [true, false, false, false, false],
-    [true, false, false, false, false],
-    [true, false, false, true, false],
-    [true, false, false, false, false],
-  ];
+  const answerArr = puzzleArr;
 
   const ROWS = answerArr.length;
   const COLS = answerArr[0].length;
   let cells = [];
 
+  gamePage.removeAttribute("style");
   //2차원 배열 만들기
   for (let i = 0; i < ROWS; i++) {
     cells.push([]);
@@ -174,5 +170,3 @@ function PaintStage() {
 
   submitBtn.addEventListener("click", submitAnswer);
 }
-
-export default PaintStage;

@@ -25,15 +25,24 @@ body {
 }
 
 #app-main > header > p {
-  height: 5rem;
-  font-size: 1rem;
+  display: flex;
+  margin-top: 2rem;
+  height: inherit;
+  font-size: 1.3rem;
   line-height: 160%;
+}
+
+#app-main > header > p img {
+  width: 150px;
+  height: 150px;
+  margin-right: 1rem;
 }
 
 #app-main > main {
 }
 
 #app-main > main > #search {
+  display: none;
 }
 
 #app-main > main > ul {
@@ -48,7 +57,7 @@ body {
   border: 1px solid rgb(197, 202, 207);
   border-radius: 0.4rem;
   background-color: rgb(205, 214, 249);
-  font-size: 14px;
+  font-size: 0.9rem;
   text-align: center;
   color: rgb(18, 2, 54);
 }

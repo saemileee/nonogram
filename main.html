@@ -7,15 +7,17 @@
     <title>노노그램</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="app-main">
       <header>
         <h1>넴모로직</h1>
         <p>
+          <img src="./src/imgs/nemmodog.png" />
           담신믄 넴모넴모 랜드믜 넴모넴모 멈무미뫄 눈미 마주치고 말맜습니다.<br />
-          담신믄 미제 넴모넴모 멈무미믜 저주로 넴모넴모 퍼즐믈 풀머먀만 돔그란
-          글자를 칠수 밌습니다.<br />멈멈!
+          담신믄 미제 넴모넴모 멈무미믜 저주로<br />넴모넴모 퍼즐믈 풀머먀만
+          돔그란 글자를 칠수 밌습니다.<br />멈멈!
         </p>
       </header>
       <main>
@@ -32,7 +34,7 @@
           <li>20*20</li>
           <li>25*25</li>
         </ul>
-        <div>
+        <div id="puzzle-list">
           <div>0문제</div>
           <table id="puzzle-table">
             <thead>
@@ -88,60 +90,28 @@
                 </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td class="id">0</td>
-                <td class="status">체크</td>
-                <td class="title"><a href="#">다라다라다라미</a></td>
-                <td class="size">5*5</td>
-                <td class="finished-count">32</td>
-                <td class="recommendation">32</td>
-                <td class="avg-time">0분</td>
-              </tr>
-              <tr>
-                <td class="id">0</td>
-                <td class="status">체크</td>
-                <td class="title"><a>다라다라다라미</a></td>
-                <td class="size">5*5</td>
-                <td class="finished-count">32</td>
-                <td class="recommendation">32</td>
-                <td class="avg-time">0분</td>
-              </tr>
-              <tr>
-                <td class="id">0</td>
-                <td class="status">체크</td>
-                <td class="title"><a>다라다라다라미</a></td>
-                <td class="size">5*5</td>
-                <td class="finished-count">32</td>
-                <td class="recommendation">32</td>
-                <td class="avg-time">0분</td>
-              </tr>
-              <tr>
-                <td class="id">0</td>
-                <td class="status">체크</td>
-                <td class="title"><a>다라다라다라미</a></td>
-                <td class="size">5*5</td>
-                <td class="finished-count">32</td>
-                <td class="recommendation">32</td>
-                <td class="avg-time">0분</td>
-              </tr>
-              <tr>
-                <td class="id">0</td>
-                <td class="status">체크</td>
-                <td class="title"><a>다라다라다라미</a></td>
-                <td class="size">5*5</td>
-                <td class="finished-count">32</td>
-                <td class="recommendation">32</td>
-                <td class="avg-time">0분</td>
-              </tr>
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
+        <!-- 게임 페이지 -->
+        <div id="game-page-container" style="display: none">
+          <div id="game-grid-container">
+            <div id="empty-cell" class="grid-box"></div>
+            <div id="col-clue" class="grid-box"></div>
+            <div id="row-clue" class="grid-box"></div>
+            <div id="board" class="grid-box"></div>
+          </div>
+          <button id="submit">제출</button>
+        </div>
       </main>
+      <!-- 푸터 -->
       <footer>
         <p>© 2023</p>
       </footer>
     </div>
     <script src="main.js"></script>
+    <script type="module" src="renderPuzzle.js">
+      import {paintStage} from './renderPuzzle.js';
+    </script>
   </body>
 </html>

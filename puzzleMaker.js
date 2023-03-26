@@ -1,7 +1,7 @@
 const gameBoard = document.getElementById("board");
 
-const ROWS = 10;
-const COLS = 10;
+const ROWS = 5;
+const COLS = 5;
 let cells = [];
 
 //2차원 배열 만들기
@@ -136,4 +136,34 @@ function clueSetting(thisRow, thisCol) {
   colClueContainer.innerHTML = colClueArr
     .map((count) => `<p>${count}</p>`)
     .join("");
+}
+
+const submitBtn = document.getElementById("submit-btn");
+submitBtn.addEventListener("click", createPuzzle);
+
+function createPuzzle(e) {
+  e.preventDefault();
+  fetch("puzzle.json", {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({
+      id: 6,
+      title: "테스트 타이틀 6",
+      answer: cells,
+      status: false,
+      size: "5*5",
+      recommendation: 32,
+      avgTime: 12345,
+      finishedCount: 32,
+      show: true,
+    }),
+  })
+    .then((res) => {
+      if (res.ok) {
+        console.log("Success!");
+        console.log(res.json());
+      } else {
+        console.log("error");
+      }
+    })
 }
